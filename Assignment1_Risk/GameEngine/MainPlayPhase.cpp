@@ -16,15 +16,22 @@ void MainPlayPhase:: setNumberOfCountries(int countries) {
 	numberOfCountries = countries;
 }
 
-/*
-void MainPlayPhase:: InitialArmyPlacement() {
-	//Place the recieved armies int the countries owned. 
-	for(int i = 0; i < listCopy->size(); i++) {
-		for(int j = 0; j < 
-
-		}
-	}
-} */
+//
+//void MainPlayPhase:: InitialArmyPlacement() {
+//	//Place the recieved armies int the countries owned. 
+//	for(int i = 0; i < listCopy->size(); i++) {
+//		while ( listCopy->at(1).getRemainingArmies() != 0 ) {
+//
+//		}
+//
+//
+//
+//		for(int j = 0; j < listCopy->at(i).getCountriesOwned().size(); i++ ) {
+//			listCopy->at(i).getCountriesOwned().at(j).IncrementArmyCount(1);
+//			listCopy->at(i).DecrementNumberOfArmies(1);
+//		}
+//	}
+//} 
 
 void MainPlayPhase:: StartRoundRobin() {
 	int roundCounter = 1; 
