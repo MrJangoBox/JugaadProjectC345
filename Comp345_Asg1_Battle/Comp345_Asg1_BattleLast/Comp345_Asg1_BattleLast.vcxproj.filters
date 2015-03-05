@@ -30,6 +30,9 @@
     <ClCompile Include="dice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="battle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="country.h">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="battle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
