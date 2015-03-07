@@ -11,7 +11,7 @@ using namespace std;
 Player:: Player(string Name,int Armies) {
 	playerName = Name;
 	remainingArmies = Armies;
-	countriesOwned =  new vector <Country> ; 
+	countriesOwned =  new vector <Country*> ; 
 }
 
 string Player:: getPlayerName() {
@@ -22,12 +22,12 @@ int Player:: getRemainingArmies() {
 	return remainingArmies;
 }
 
-vector <Country>* Player:: getCountriesOwned() {
+vector <Country*>* Player:: getCountriesOwned() {
 	return countriesOwned;
 }
 
 Country* Player::getCountry(int index) {
-	return &(countriesOwned->at(index));
+	return countriesOwned->at(index);
 }
 
 Country* Player::getNeighbour(int cIndex, int nIndex) {
@@ -45,7 +45,7 @@ void Player::DecrementNumberOfArmies(int Armies) {
 	remainingArmies -= Armies;
 }
 
-void Player::AddCountry(Country country) {
+void Player::AddCountry(Country *country) {
 	countriesOwned->push_back(country);
 }
 
@@ -59,8 +59,8 @@ void Player::PrintPlayerStats() {
 
 	for(int i = 0; i < countriesOwned->size(); i++) {
 		cout << "OPTION " << (i+1) << " : ";
-		Country country = countriesOwned->at(i);
-		country.PrintCountry();
+		Country *country = countriesOwned->at(i);
+		country->PrintCountry();
 	}
 }
 
@@ -68,9 +68,9 @@ void Player::PrintCountriesAndNeighbours() {
 	
 	for(int i = 0; i < countriesOwned->size(); i++) {
 		cout << "OPTION " << (i+1) << " : ";
-		countriesOwned->at(i).PrintCountry();
+		countriesOwned->at(i)->PrintCountry();
 		cout << "\nNeighbours : " << endl;
-		countriesOwned->at(i).PrintNeighbours();
+		countriesOwned->at(i)->PrintNeighbours();
 		cout << "\n----------------------------------------------- " << endl;
 	}
 

@@ -118,7 +118,7 @@ void StartupPhase:: AssignCountries() {
 	for(int i = 0; i < countries.size(); i++) {
 		if (j == numberOfPlayers)
 			j = 0;
-		players->at(j).AddCountry(countries.at(i));
+		players->at(j).AddCountry(&countries.at(i));
 		j++;
 	}
 	//PrintPlayerInfo(); 

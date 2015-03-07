@@ -18,7 +18,7 @@ private:
 	void UserInputForReinforcement(Player *player);
 	int ComputeReinforcements(Player *player);
 //	int SelectCountry(Player *player);
-	int SelectOption(vector<Country> *countries); 
+	int SelectOption(vector<Country*> *countries); 
 	int SelectNeighbour(vector<Country*> cNeighbours);
 	int ChooseNumberOfArmies(Player *player);
 

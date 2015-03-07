@@ -88,7 +88,7 @@ void MainPlayPhase::Reinforce(Player *player) {
 }
 
 //int MainPlayPhase::SelectCountry(Player *player) {
-int MainPlayPhase::SelectOption(vector<Country> * countries) {
+int MainPlayPhase::SelectOption(vector<Country*> * countries) {
 	int optionNo;
 	cin >> optionNo;
 //	while( optionNo < 1 || optionNo > player->getCountriesOwned().size()) {
