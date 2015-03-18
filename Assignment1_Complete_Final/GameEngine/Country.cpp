@@ -34,7 +34,7 @@ void Country::PrintCountry() {
 void Country::PrintNeighbours() {
 	for(int i = 0; i < cNeighbours.size(); i++) {
 		cout << "OPTION : " << (i+1) << " | " << cNeighbours.at(i)->getCountryName() << " | " ;
-		cout << "Armies placed here : " << armiesPlaced << endl;
+		cout << "Armies placed here : " << cNeighbours.at(i)->getArmiesPlaced() << endl;
 	}
 }
 

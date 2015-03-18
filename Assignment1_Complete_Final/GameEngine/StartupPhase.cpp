@@ -1,7 +1,6 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
-#include <time.h>
 #include <stddef.h>
 #include "StartupPhase.h"
 #include "Player.h"
@@ -73,7 +72,7 @@ void StartupPhase::AddCountries()
 
 void StartupPhase::AddNeighbours() 
 {
-	srand((unsigned int)time(0));
+	//srand((unsigned int)time(0));
 
 	//Create Country neighbour vectors for the purpose of demonstration.
 	for(int i = 0; i < countries.size() ; i++) {

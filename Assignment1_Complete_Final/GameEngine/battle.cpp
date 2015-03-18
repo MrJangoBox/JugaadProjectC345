@@ -240,7 +240,7 @@ int Battle::maxAttackType(Country cAtkr)
 }
 
 // All in attack feature until conquer or loss
-void Battle::allIn(Country *cDfndr, Country *cAtkr) 
+void Battle::allIn(Country *cAtkr, Country *cDfndr) 
 {
 	while(cAtkr -> getArmiesPlaced() > 0 && cDfndr -> getArmiesPlaced() > -1)
 	{

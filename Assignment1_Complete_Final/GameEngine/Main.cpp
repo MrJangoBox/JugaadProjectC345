@@ -3,12 +3,14 @@
 *Stephny Devadas
 */
 #include<iostream>
+#include <time.h>
 #include "MainPlayPhase.h"
 #include "StartupPhase.h"
 
 using namespace std;
 
 int main() {
+	srand((unsigned int)time(0));
 
 	cout << "\t\tRISK- GameEngine!" << endl;
 	cout << "NOTE: This is a game for 2- 6 players only!\n" << endl;

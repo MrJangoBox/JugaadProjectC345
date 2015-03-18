@@ -163,8 +163,8 @@ void MainPlayPhase::Attack(Player *player) {
 	attack = SelectNeighbour(country->getCNeighbours());
 	// simplify above ?
 	
-	Country *dfndrCountryP = player->getNeighbour(from - 1, attack - 1);
 	Country *atkrCountryP = player->getCountry(from - 1);
+	Country *dfndrCountryP = player->getNeighbour(from - 1, attack - 1);
 
 	Battle myBattle(atkrCountryP, dfndrCountryP);
 	
