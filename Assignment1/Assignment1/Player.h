@@ -1,21 +1,20 @@
-//#ifndef NODE_H_
-#define NODE_H_
+#ifndef PLAYER_H_
+#define PLAYER_H_
+
+#include "Continent.h"
+#include "Node.h"
 
 #include<vector>
 #include<string>
-#include "Continent.h"
-#include "Node.h"
 
 using namespace std;
 
 class Player
 {
 public:
-	Player(string name, string rank, string attributes, Node *node);
+	Player(string name, Node *node);
 	string name;
-	string rank;
-	string attributes;
 	Node *node;
 };
 
-//#endif /* NODE_H_ */
+#endif PLAYER_H_

@@ -154,7 +154,7 @@ void MainPlayPhase::Fortify(Player *player) {
 
 		cout << "\nHow many armies do you want to move? " << endl;
 		cin >> armies;
-		while(armies > (player->getCountry(from)->getArmiesPlaced())) {
+		while(armies > (player->getCountry(from - 1)->getArmiesPlaced())) {
 			cout << "Invalid input. Try again." << endl;
 			cout << "You can move maximum " << player->getCountry(from)->getArmiesPlaced() << " armies!" << endl;
 			cin >> armies;		

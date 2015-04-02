@@ -74,6 +74,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="battle.cpp" />
     <ClCompile Include="country.cpp" />
     <ClCompile Include="dice.cpp" />
     <ClCompile Include="main.cpp" />
@@ -81,6 +82,7 @@
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="battle.h" />
     <ClInclude Include="country.h" />
     <ClInclude Include="dice.h" />
     <ClInclude Include="player.h" />
