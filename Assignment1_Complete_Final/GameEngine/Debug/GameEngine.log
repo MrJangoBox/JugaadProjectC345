@@ -1,0 +1,57 @@
+﻿Build started 4/2/2015 5:27:38 PM.
+     1>Project "C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\GameEngine\GameEngine.vcxproj" on node 2 (build target(s)).
+     1>PrepareForBuild:
+         Creating directory "C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\Debug\".
+       InitializeBuildStatus:
+         Creating "Debug\GameEngine.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt battle.cpp Country.cpp dice.cpp Main.cpp MainPlayPhase.cpp Player.cpp StartupPhase.cpp
+         StartupPhase.cpp
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\startupphase.cpp(78): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\startupphase.cpp(117): warning C4018: '<' : signed/unsigned mismatch
+         Player.cpp
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\player.cpp(60): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\player.cpp(69): warning C4018: '<' : signed/unsigned mismatch
+         MainPlayPhase.cpp
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\mainplayphase.cpp(23): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\mainplayphase.cpp(95): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\mainplayphase.cpp(105): warning C4018: '>' : signed/unsigned mismatch
+         Main.cpp
+         dice.cpp
+         Country.cpp
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\country.cpp(35): warning C4018: '<' : signed/unsigned mismatch
+         battle.cpp
+         Generating Code...
+     1>c:\users\olek\documents\visual studio 2010\projects\assignment1_complete_final\gameengine\startupphase.cpp(47): warning C4715: 'StartupPhase::getIntialArmyPlacements' : not all control paths return a value
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\GameEngine.exe.embed.manifest.res" Debug\GameEngine_manifest.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\Debug\GameEngine.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\GameEngine.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\Debug\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\Debug\GameEngine.lib" /MACHINE:X86 Debug\GameEngine.exe.embed.manifest.res
+         Debug\battle.obj
+         Debug\Country.obj
+         Debug\dice.obj
+         Debug\Main.obj
+         Debug\MainPlayPhase.obj
+         Debug\Player.obj
+         Debug\StartupPhase.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\GameEngine.exe.embed.manifest" /manifest Debug\GameEngine.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\GameEngine.exe.embed.manifest.res" Debug\GameEngine_manifest.rc 
+       LinkEmbedManifest:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\Debug\GameEngine.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\GameEngine.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\Debug\GameEngine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\Debug\GameEngine.lib" /MACHINE:X86 Debug\GameEngine.exe.embed.manifest.res
+         Debug\battle.obj
+         Debug\Country.obj
+         Debug\dice.obj
+         Debug\Main.obj
+         Debug\MainPlayPhase.obj
+         Debug\Player.obj
+         Debug\StartupPhase.obj
+         GameEngine.vcxproj -> C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\Debug\GameEngine.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\GameEngine.unsuccessfulbuild".
+         Touching "Debug\GameEngine.lastbuildstate".
+     1>Done Building Project "C:\Users\Olek\Documents\Visual Studio 2010\Projects\Assignment1_Complete_Final\GameEngine\GameEngine.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.40
