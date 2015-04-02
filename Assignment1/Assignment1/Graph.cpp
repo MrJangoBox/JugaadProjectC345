@@ -1,15 +1,31 @@
 #include "Graph.h"
-#include "Node.h"
-#include<vector>
+
+#include <iostream>
+#include <vector>
+#include <map>
+#include <string>
+
 using namespace std;
 
-Graph::Graph()
+void Graph::addnode(const string &name)
 {
-	//countries = vector<Node>();
+    vmap::iterator itr=work.begin();
+    itr=work.find(name);
+    if(itr==work.end())
+        {
+           vertex *v;
+           v= new vertex(name);
+           work[name]=v;
+           return;
+	    }
+     cout<<"\nVertex already exists!";
 }
 
-Graph::~Graph()
+void Graph::addedge(const string& from, const string& to)
 {
-	//graph desctuctor method
+    vertex *f=(work.find(from)->second);
+    vertex *t=(work.find(to)->second);
+    pair<int,vertex *> edge = make_pair(to, from);  //edge pair tells you countries on both sides of it
+    f->adj.push_back(edge);
 }
 

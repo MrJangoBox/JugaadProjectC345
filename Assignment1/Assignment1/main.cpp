@@ -1,21 +1,24 @@
-#include<iostream>
 #include "Continent.h"
 #include "Node.h"
 #include "Graph.h"
 #include "Player.h"
 #include "Army.h"
+
 #include<iostream>
 #include<string>
 #include<vector>
+
 using namespace std;
 
 int main()
 {
 	cout << "TESTING!" << endl;
 	
-	Continent Asia = Continent("Asia", 1);
-	Continent Africa = Continent("Africa", 2);
-	Continent Europe = Continent("Europe", 3);
+
+
+	//vector<Node*> countryVector;
+	//countryVector.push_back(new Node("Canada", 1, null, 0));
+	//string name, int &continent, vector<Node*> adjacent, int code
 	
 	/*Continent ameristralia = Continent("AMERISTRALIA", 1);
 	Node canada = Node("Canada", &ameristralia);
