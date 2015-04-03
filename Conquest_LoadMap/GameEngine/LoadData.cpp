@@ -1,4 +1,5 @@
 #include "LoadData.h"
+#include "Continent.h"
 
 #include <iostream>
 #include <fstream>
@@ -17,6 +18,46 @@ LoadData::LoadData(string mFile) : mapFile(mFile)
 	loadMap(mapFile);
 }
 
+void StoreContinent(string line) 
+{
+	string delimeter = "=";
+
+	size_t pos = 0;
+	string token;
+	while ((pos = line.find(delimeter)) != string::npos)
+	{
+		token = line.substr(0, pos);
+		//cout << token << endl;
+		line.erase(0, pos + delimeter.length());
+	}
+	if(line != "[Territories]" && line != "[Continents]" && line != "") {  
+		//cout << line << endl;
+		Continent continent = Continent::Continent(token, stoi(line));
+	}
+}
+
+void StoreCountries(string line) 
+{
+	vector<string> tokens;
+	string delimeter = ",";
+
+	size_t endPos = 0;
+	//size_t startPos = 0;
+	string token;
+	while (endPos != string::npos)
+	{
+		endPos = line.find(delimeter);
+		token = line.substr(0, endPos);
+		tokens.push_back(token);
+		line = line.substr(endPos+delimeter.length(), string::npos);
+		cout << line;
+	}
+	//if(line != "[Territories]" && line != "[Continents]" && line != "") {  
+	//	//cout << line << endl;
+	//	Continent continent = Continent::Continent(token, stoi(line));
+	//}
+}
+
 void LoadData::loadMap(string mapFile)
 {
     string STRING;
@@ -30,7 +71,22 @@ void LoadData::loadMap(string mapFile)
         if (STRING != previousLine)
         {
             previousLine=STRING;
-            cout<<STRING<<endl; // Prints our STRING.
+            if(previousLine == "[Continents]")
+			{
+				while(previousLine != "[Territories]") // To get you all the lines.
+				{
+					previousLine=STRING;
+					StoreContinent(previousLine);
+					getline(infile,STRING); // Saves the line in STRING.
+				}
+				
+				while(!infile.eof( )) // To get you all the lines.
+				{
+					previousLine=STRING;
+					StoreCountries(previousLine);
+					getline(infile,STRING); // Saves the line in STRING.
+				}
+			}
         }
     }
     infile.close();

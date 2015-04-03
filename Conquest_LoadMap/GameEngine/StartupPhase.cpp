@@ -65,7 +65,7 @@ void StartupPhase::AddCountries()
 	for(int i = 0; i < 42 ; i++) {
 		stringstream countryName;
 		countryName << "Country " << (i+1);
-		Country country = Country(countryName.str(), 0); //Number of armies placed in this country is initially 0. 
+		Country country = Country(countryName.str(), 0, "Continent"); //Number of armies placed in this country is initially 0. 
 		countries.push_back(country);
 	}
 }

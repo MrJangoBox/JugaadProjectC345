@@ -75,7 +75,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseRegion.cpp" />
     <ClCompile Include="battle.cpp" />
+    <ClCompile Include="Continent.cpp" />
     <ClCompile Include="Country.cpp" />
     <ClCompile Include="dice.cpp" />
     <ClCompile Include="Edge.cpp" />
@@ -86,7 +88,9 @@
     <ClCompile Include="StartupPhase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseRegion.h" />
     <ClInclude Include="battle.h" />
+    <ClInclude Include="Continent.h" />
     <ClInclude Include="Country.h" />
     <ClInclude Include="dice.h" />
     <ClInclude Include="Edge.h" />

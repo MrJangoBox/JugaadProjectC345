@@ -1,18 +1,24 @@
-#include <iostream>
+#include "BaseRegion.h"
 #include "Country.h"
+
+#include <iostream>
 #include <vector>
 
 using namespace std;
 
 //Constructor
-Country:: Country(string Name, int NoOfArmiesPlaced) {
-	countryName = Name;
+Country:: Country(string Name, int NoOfArmiesPlaced, string countryContinentName): BaseRegion(Name) {
+	countryContinentName = countryContinentName;
 	armiesPlaced = NoOfArmiesPlaced; //Number of armies placed in the country.
 	vector<Country*> cNeighbours;
 }
 
 string Country:: getCountryName() {
-	return countryName;
+	return getBaseName();
+}
+
+string Country:: getCountryContinentName() {
+	return countryContinentName;
 }
 
 int Country:: getArmiesPlaced() {
