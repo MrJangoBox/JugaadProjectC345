@@ -33,7 +33,7 @@ void Country::SetNeighbours(vector<Country*> neighbours) {
 }
 
 void Country::PrintCountry() {
-	cout << countryName << " | " ;
+	cout << countryName << " belongs to " << countryContinentName ;
 	cout << "Armies placed here : " << armiesPlaced << endl;
 }
 

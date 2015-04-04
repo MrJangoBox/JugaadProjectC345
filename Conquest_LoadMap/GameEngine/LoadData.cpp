@@ -1,4 +1,4 @@
-#include "LoadData.h"
+ #include "LoadData.h"
 #include "Continent.h"
 
 #include <iostream>
@@ -50,12 +50,20 @@ void StoreCountries(string line)
 		token = line.substr(0, endPos);
 		tokens.push_back(token);
 		line = line.substr(endPos+delimeter.length(), string::npos);
-		cout << line;
+		cout << line << endl;
 	}
 	//if(line != "[Territories]" && line != "[Continents]" && line != "") {  
 	//	//cout << line << endl;
 	//	Continent continent = Continent::Continent(token, stoi(line));
 	//}
+	for (int i = 0; i < tokens.size(); i++)
+	{
+		if(i = 0)
+		{
+			Country country = Country::Country(tokens[i],0,tokens[3]);
+			country.PrintCountry();
+		}
+	}
 }
 
 void LoadData::loadMap(string mapFile)
