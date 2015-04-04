@@ -10,6 +10,9 @@ class BaseRegion
 		string baseName;
 
 	public:
+		// Default constructor
+		BaseRegion();
+
 		// Public constructor
 		BaseRegion(string name);
 

@@ -33,6 +33,6 @@ void Continent::PrintContinent() {
 
 void Continent::PrintCountries() {
 	for(int i = 0; i < cCountries.size(); i++) {
-		cout << "OPTION : " << (i+1) << " | " << cCountries.at(i)->getBaseName() << " | " ;
+		cout << "OPTION : " << (i+1) << " | " << cCountries.at(i)->getCountryName() << " | " ;
 	}
 }

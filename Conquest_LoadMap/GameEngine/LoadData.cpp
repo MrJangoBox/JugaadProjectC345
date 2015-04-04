@@ -1,6 +1,8 @@
 #include "LoadData.h"
 #include "Continent.h"
-
+#include "Country.h"
+#include "BaseRegion.h"
+#include <vector>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -16,9 +18,25 @@ LoadData::LoadData(string mFile) : mapFile(mFile)
 {
 	cout << "A File is Loaded";
 	loadMap(mapFile);
+	vector<Country*> storedCountries;
 }
 
-void StoreContinent(string line) 
+bool LoadData::CountryExists(string countryName)
+{
+	for(int i = 0; i < storedCountries.size(); i++) {cout << storedCountries.at(i) << endl;}
+	int size = storedCountries.size();
+	for(int i = 0; i < storedCountries.size(); i++)
+	{
+		cout << countryName + " vs " + storedCountries.at(i)->getCountryName() << endl;
+		if(countryName == storedCountries.at(i)->getCountryName())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+void LoadData::StoreContinent(string line) 
 {
 	string delimeter = "=";
 
@@ -36,7 +54,18 @@ void StoreContinent(string line)
 	}
 }
 
-void StoreCountries(string line) 
+void LoadData::updateCountry(string countryName, string continentName)
+{
+	for(int i = 0; i < storedCountries.size(); i++)
+	{
+		if(countryName == storedCountries.at(i)->getCountryName())
+		{
+			storedCountries[i]->setCountryContinentName(continentName);
+		}
+	}
+}
+
+void LoadData::StoreCountries(string line) 
 {
 	vector<string> tokens;
 	string delimeter = ",";
@@ -50,7 +79,32 @@ void StoreCountries(string line)
 		token = line.substr(0, endPos);
 		tokens.push_back(token);
 		line = line.substr(endPos+delimeter.length(), string::npos);
-		cout << line;
+	}
+
+	for(int i = 0; i < tokens.size(); i++) 
+	{
+		//Country country;
+		if(i == 0)
+		{
+			if(!CountryExists(tokens[i]))
+			{
+				cout << tokens[0] + " vs " + tokens[3] << endl;
+				Country country = Country(tokens[0], 0, tokens[3]);
+				Country* countryPointer = &country;
+				countryPointer->PrintCountry();
+				storedCountries.push_back(countryPointer);
+				cout << storedCountries.at(i) << endl;
+			} else {
+				updateCountry(tokens[0], tokens[3]);
+			}
+		} else if(i > 3) {
+			if(!CountryExists(tokens[i]))
+			{
+				Country nCountry = Country::Country(tokens[i], 0, " ");
+				storedCountries.push_back(&nCountry);
+				//country.AddNeighbour(&nCountry);
+			}
+		}
 	}
 	//if(line != "[Territories]" && line != "[Continents]" && line != "") {  
 	//	//cout << line << endl;

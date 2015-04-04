@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Country: public BaseRegion 
+class Country
 {
 private:
 	// Private vars
@@ -19,6 +19,10 @@ public:
 	// Public Constructor
 	Country(string Name, int NoOfArmiesPlaced, string countryContinentName);
 
+	// Default Constructor
+	Country();
+
+
 	// Public methods
 	void SetNeighbours(vector<Country*> neighbours);
 	string getCountryName();
@@ -29,6 +33,8 @@ public:
 	void IncrementArmyCount(int Armies);
 	void DecrementArmyCount(int Armies);
 	void PrintNeighbours();
+	void setCountryContinentName(string continentName);
+	void AddNeighbour(Country* country);
 
 };
 #endif

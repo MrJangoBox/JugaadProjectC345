@@ -6,15 +6,28 @@
 
 using namespace std;
 
-//Constructor
-Country:: Country(string Name, int NoOfArmiesPlaced, string countryContinentName): BaseRegion(Name) {
+// Default Constructor
+Country:: Country()
+{
+}
+
+// Parametrized Constructor
+Country:: Country(string Name, int NoOfArmiesPlaced, string countryContinentName) {
+	countryName = Name;
 	countryContinentName = countryContinentName;
 	armiesPlaced = NoOfArmiesPlaced; //Number of armies placed in the country.
 	vector<Country*> cNeighbours;
 }
 
+//// Parametrized Constructor
+//Country:: Country(string Name, int NoOfArmiesPlaced, string countryContinentName): BaseRegion(Name) {
+//	countryContinentName = countryContinentName;
+//	armiesPlaced = NoOfArmiesPlaced; //Number of armies placed in the country.
+//	vector<Country*> cNeighbours;
+//}
+
 string Country:: getCountryName() {
-	return getBaseName();
+	return countryName;
 }
 
 string Country:: getCountryContinentName() {
@@ -28,8 +41,18 @@ vector<Country*> Country::getCNeighbours(){
 	return cNeighbours;
 }
 
+void Country::setCountryContinentName(string continentName)
+{
+	countryContinentName = continentName;
+}
+
 void Country::SetNeighbours(vector<Country*> neighbours) {
 	cNeighbours = neighbours;
+}
+
+void Country::AddNeighbour(Country* country) 
+{
+	cNeighbours.push_back(country);
 }
 
 void Country::PrintCountry() {
