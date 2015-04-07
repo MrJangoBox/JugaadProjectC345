@@ -173,7 +173,10 @@ void LoadData::LoadMap(string mapFile)
 				while(!inputfile.eof( )) // Retrieves all the territories.
 				{
 					previousLine =  nextLine;
-					StoreCountries(previousLine);
+					if(!nextLine.empty())
+					{ 
+						StoreCountries(previousLine);
+					}
 					getline(inputfile, nextLine); // Saves the line in STRING.
 				} 
 			}
