@@ -10,11 +10,6 @@ using namespace std;
 int main() {
 	srand((unsigned int)time(0));
 
-
-	vector<Country*>* currentMap = LoadData::LoadData("world.map").getAllCountries();
-
-	cout << currentMap->size();
-
 	cout << "\t\tRISK- GameEngine!" << endl;
 	cout << "NOTE: This is a game for 2- 6 players only!\n" << endl;
 	cout << "Choose the number of players : " << endl;
@@ -37,9 +32,6 @@ int main() {
 	cout << "Intialising " << userInput << " players.\n" << endl; 
 
 	StartupPhase game =	StartupPhase:: StartupPhase(userInput);
-	game.ChooseMap();
-	game.CreatePlayers();
-	game.AssignCountries();
 	game.StartGame();
 
 	system("PAUSE");

@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Country.h"
 #include "MainPlayPhase.h"
+#include "LoadData.h"
 
 using namespace std;
 
@@ -14,6 +15,13 @@ StartupPhase::StartupPhase(int NoOfPlayers) {
 	numberOfPlayers = NoOfPlayers;
 	players = new vector <Player>; //Maximum number of players is 6.
 	vector <Country> countries; // Maximum number of countries is 42.
+
+	// Loads generic risk map
+	vector<Country*>* currentMap = LoadData::LoadData("world.map").getAllCountries();
+
+	ChooseMap();
+	CreatePlayers();
+	AssignCountries();
 }
 
 int StartupPhase:: getNumberOfPlayers() {
@@ -33,7 +41,7 @@ void StartupPhase:: ChooseMap() {
 }
 
 //Return the initial number of armies allowed for the number of players chosen.
-int StartupPhase::  getIntialArmyPlacements(int NumberOfPlayers) {
+int StartupPhase::  getInitialArmyPlacements(int NumberOfPlayers) {
 	if(NumberOfPlayers == 2)
 		return 40;
 	if(NumberOfPlayers == 3)
@@ -46,9 +54,15 @@ int StartupPhase::  getIntialArmyPlacements(int NumberOfPlayers) {
 		return 20;
 }
 
+// Load Map
+void LoadMapStep()
+{
+
+	}
+
 //Create Player Objects.
 void StartupPhase::CreatePlayers() {
-	int armies = getIntialArmyPlacements(numberOfPlayers);
+	int armies = getInitialArmyPlacements(numberOfPlayers);
 	cout <<  "\nEach player starts with " << armies << " armies (Infantry)." << endl;
 
 	for(int i = 0; i < numberOfPlayers; i++) {
@@ -98,18 +112,15 @@ void StartupPhase::AddNeighbours()
 	}
 }
 
-void StartupPhase:: ShuffleCountries() {
-	
-	//Shuffle elements in the vector countries.
-	//srand((unsigned int)time(0)); //provide a seed for the random generator
-	random_shuffle(countries.begin(), countries.end());
-}
-
 //This function assigns random countries to each player.
 void StartupPhase:: AssignCountries() {
 	cout << "Assigning random countries to each player." << endl;
+	
+	
 	AddCountries();
 	AddNeighbours();
+	
+
 	ShuffleCountries(); // create Country objects and Shuffle them.
 
 	//Same as dealing a deck of cards. 
@@ -123,6 +134,13 @@ void StartupPhase:: AssignCountries() {
 	//PrintPlayerInfo(); 
 }
 
+void StartupPhase:: ShuffleCountries() {
+	
+	//Shuffle elements in the vector countries.
+	//srand((unsigned int)time(0)); //provide a seed for the random generator
+	random_shuffle(countries.begin(), countries.end());
+}
+
 //Displays each player's attributes.
 void StartupPhase::PrintPlayerInfo() {
 	for(int i = 0; i < numberOfPlayers; i++) {
@@ -133,6 +151,4 @@ void StartupPhase::PrintPlayerInfo() {
 //Function that starts the game.
 void StartupPhase:: StartGame() {
 	MainPlayPhase mainPhaseObj = MainPlayPhase(players, countries.size());
-	mainPhaseObj.PlaceInitialArmies();
-	mainPhaseObj.StartRoundRobin();
 }

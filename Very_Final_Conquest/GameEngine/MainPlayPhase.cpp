@@ -8,9 +8,13 @@
 
 using namespace std;
 
+// Parametrized constructor
 MainPlayPhase:: MainPlayPhase(vector <Player> *playersPtr, int NoOfCountries) {
 	listCopy = playersPtr;
-	numberOfCountries = NoOfCountries; 
+	numberOfCountries = NoOfCountries;
+
+	PlaceInitialArmies();
+	StartRoundRobin();
 }
 
 //This function is only for the purpose of demonstration.
@@ -40,6 +44,8 @@ void MainPlayPhase:: StartRoundRobin() {
 	//Assuming a player wins when he owns all the countries.
 	cout << "\n\t-------------ROUND " << roundCounter << " ------------ " << endl;
 	while( listCopy->at(i).getCountriesOwned()->size() != numberOfCountries ) {
+		
+		// Main game phases
 		cout << listCopy->at(i).getPlayerName() << " : " <<endl;
 		Reinforce(&listCopy->at(i));
 		Attack(&listCopy->at(i));
