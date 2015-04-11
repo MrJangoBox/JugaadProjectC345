@@ -1,3 +1,5 @@
+#ifndef DICE_H
+#define DICE_H
 //#include "stdafx.h"
 
 /**
@@ -21,3 +23,4 @@ public:
 private:
 
 };
+#endif

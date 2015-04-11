@@ -1,3 +1,5 @@
+#ifndef BATTLE_H
+#define BATTLE_H
 //#include "stdafx.h"
 #include "country.h"
 
@@ -59,3 +61,4 @@ private:
 	// Private variables declaration
 
 };
+#endif
