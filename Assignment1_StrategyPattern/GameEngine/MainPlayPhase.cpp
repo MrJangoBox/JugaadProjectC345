@@ -11,7 +11,10 @@ using namespace std;
 
 MainPlayPhase:: MainPlayPhase(vector <Player> *playersPtr, int NoOfCountries) {
 	listCopy = playersPtr;
-	numberOfCountries = NoOfCountries; 
+	numberOfCountries = NoOfCountries;
+
+	PlaceInitialArmies();
+	StartRoundRobin();
 }
 
 //This function is only for the purpose of demonstration.

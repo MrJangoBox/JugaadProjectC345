@@ -7,15 +7,23 @@
 using namespace std;
 
 // Default constructor declaration
-Battle::Battle() : countryAtkr(), countryDfndr()
+Battle::Battle() : playerAtkr(), countryAtkr(), countryDfndr()
 {
 }
 
 // Parameterized constructor decalration
-Battle::Battle(Country *cAtkr, Country *cDfndr) : countryAtkr(cAtkr), countryDfndr(cDfndr)
+Battle::Battle(Player *pAtkr, Country *cAtkr, Country *cDfndr) : playerAtkr(pAtkr), countryAtkr(cAtkr), countryDfndr(cDfndr)
 {
-	cout << "A battle has Begun";
-	battleDrive(countryDfndr, countryAtkr);
+	
+	// *************************** Added for Assignement 2 - Strategy **********************************
+
+	if(pAtkr->getPlayerName() == "PLAYER 1") {
+		battleDrive(countryDfndr, countryAtkr);
+	} else {
+		allIn(countryAtkr, countryDfndr);
+	}
+
+	// *************************************************************************************************
 }
 
 //Function to find highest (maximum) value in array

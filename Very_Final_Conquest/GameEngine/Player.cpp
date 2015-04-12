@@ -11,8 +11,42 @@ using namespace std;
 Player:: Player(string Name,int Armies) {
 	playerName = Name;
 	remainingArmies = Armies;
-	countriesOwned =  new vector <Country*> ; 
+	countriesOwned =  new vector <Country*> ;
+
+	if(playerName != "PLAYER 1")
+	{
+		setTypeOfPlayer();
+	} else {
+		typeOfPlayer = "Human";
+	}
 }
+
+// *************************** Added for Assignement 2 - Strategy **********************************
+
+void Player:: setTypeOfPlayer()
+{
+	playerTypeNum = 0;
+
+	// Generates random player type and returns the name
+	playerTypeNum = rand() % 3 + 1;
+
+	switch(playerTypeNum) 
+	{
+		case 1 : typeOfPlayer = "Aggressive";
+				 break;
+		case 2 : typeOfPlayer = "Defensive";
+				 break;
+		case 3 : typeOfPlayer = "Random";
+				 break;
+	}
+}
+
+string Player:: getTypeOfPlayer()
+{
+	return typeOfPlayer;
+}
+
+// *************************************************************************************************
 
 string Player:: getPlayerName() {
 	return playerName;

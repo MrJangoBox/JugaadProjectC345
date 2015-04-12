@@ -3,6 +3,7 @@
 #include <vector>
 #include "Player.h"
 #include "StartupPhase.h"
+#include "CompAttack.h"
 
 using namespace std; 
 
@@ -21,6 +22,7 @@ private:
 	int SelectOption(vector<Country*> *countries); 
 	int SelectNeighbour(vector<Country*> cNeighbours);
 	int ChooseNumberOfArmies(Player *player);
+	string CompChosesStrategy(Player *player);
 
 public:
 	MainPlayPhase(vector <Player> *playersPtr, int NoOfCountries);

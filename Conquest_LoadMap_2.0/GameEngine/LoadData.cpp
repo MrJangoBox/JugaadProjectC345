@@ -125,9 +125,7 @@ void LoadData:: StoreCountries(string line)
 			int countryIndex = getIndexOfCountry(tokens[0]);
 			allCountries->at(countryIndex).setCountryContinentName(tokens[3]);
 
-		//	if(!CountryExistsInTheContinent(continentIndex,tokens[0]))
-			//	Country *countryPtr = &(allCountries->at(countryIndex));
-				allContinents->at(continentIndex).AddContinentCountries(&(allCountries->at(countryIndex)));
+			allContinents->at(continentIndex).AddContinentCountries(&(allCountries->at(countryIndex)));
 		}
 
 		else if(i > 3 && !CountryExists(tokens[i]))
@@ -139,6 +137,7 @@ void LoadData:: StoreCountries(string line)
 		}
 	}
 }
+
 void LoadData::print()
 {
 	for(int i = 0; i < allContinents->size() ; i++) {
@@ -147,6 +146,7 @@ void LoadData::print()
 		cout << allContinents->at(i).getArmyValue() <<endl;
 	}
 }
+
 void LoadData::LoadMap(string mapFile)
 {
 	string nextLine;

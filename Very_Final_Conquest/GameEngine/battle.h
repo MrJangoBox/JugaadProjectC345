@@ -2,6 +2,7 @@
 #define BATTLE_H
 //#include "stdafx.h"
 #include "country.h"
+#include "Player.h"
 
 #include <string>
 using namespace std;
@@ -14,13 +15,15 @@ public:
 	// Default constructor
 	Battle();
 	// Parametrized constructor
-	Battle(Country *cAtkr, Country *cDfndr);
+	Battle(Player *pAtkr, Country *cAtkr, Country *cDfndr);
 
 	// Public methods Declarations
 
 	// Public variables declaration
 	Country *countryAtkr;
 	Country *countryDfndr;
+	Player *playerAtkr;
+
 
 private:
 	// Private methods Declarations

@@ -5,10 +5,10 @@
 #include "Player.h"
 #include "Country.h"
 #include "battle.h"
+#include "CompAttack.h"
 
 using namespace std;
 
-// Parametrized constructor
 MainPlayPhase:: MainPlayPhase(vector <Player> *playersPtr, int NoOfCountries) {
 	listCopy = playersPtr;
 	numberOfCountries = NoOfCountries;
@@ -44,8 +44,6 @@ void MainPlayPhase:: StartRoundRobin() {
 	//Assuming a player wins when he owns all the countries.
 	cout << "\n\t-------------ROUND " << roundCounter << " ------------ " << endl;
 	while( listCopy->at(i).getCountriesOwned()->size() != numberOfCountries ) {
-		
-		// Main game phases
 		cout << listCopy->at(i).getPlayerName() << " : " <<endl;
 		Reinforce(&listCopy->at(i));
 		Attack(&listCopy->at(i));
@@ -141,46 +139,76 @@ void MainPlayPhase::UserInputForReinforcement(Player *player) {
 }
 
 void MainPlayPhase::Attack(Player *player) {
-	char ch;	
-	int from;
-	int attack;
-	cout << "\nYOUR turn to ATTACK!" << endl;
-	cout << "\nDo you want to attack?" << endl;
-	
-	cin >> ch;
-
-	while(toupper(ch) != 'Y' && toupper(ch) != 'N') {
-			cout << "Not vald input" <<endl;
-			cin >> ch;
-		}
-
-	while (toupper(ch) == 'Y') 
+	 
+	// Determines if computer player or human player
+	if(player->getPlayerName() != "PLAYER 1")
 	{
-	ch = 'B';
-	cout << "These are your options : " << endl;
-	player->PrintCountriesAndNeighbours();
 
-	cout << "Which country would you like to ATTACK from?\nChoose an option." << endl;
-	from = SelectOption(player->getCountriesOwned());
+		// *************************** Added for Assignement 2 - Strategy **********************************
+		cout << "\n\n";
+		player->PrintPlayerStats();
 
-	cout << "Which country are you attacking?" <<endl;
-	Country* country = player->getCountry(from - 1);
-	vector<Country*> neighbours = country->getCNeighbours();
-	attack = SelectNeighbour(country->getCNeighbours());
-	// simplify above ?
-	
-	Country *atkrCountryP = player->getCountry(from - 1);
-	Country *dfndrCountryP = player->getNeighbour(from - 1, attack - 1);
+		// Based on the player type, sets the strategy to use during attack
+		string playerType = player->getTypeOfPlayer();
 
-	Battle myBattle(atkrCountryP, dfndrCountryP);
-	
-	while(toupper(ch) != 'Y' && toupper(ch) != 'N') {
+		CompAttack compAttack(new RandomAttack());
+
+		if (playerType == "Aggressive")
+		{
+			compAttack.setAttackStrategy(new AggresiveAttack());
+		} else if (playerType == "Defensive") {
+			compAttack.setAttackStrategy(new DefensiveAttack());
+		}
+		
+		// Executes the randomly determined strategy for the player
+		cout << "\n\n";
+		compAttack.executeAttackStrategy(player);
+
+		player->PrintPlayerStats();
+
+		// *************************************************************************************************
+
+	} else {
+		char ch;	
+		int from;
+		int attack;
+		cout << "\nYOUR turn to ATTACK!" << endl;
 		cout << "\nDo you want to attack?" << endl;
-			cin >> ch;
+	
+		cin >> ch;
+
+		while(toupper(ch) != 'Y' && toupper(ch) != 'N') {
+				cout << "Not vald input" <<endl;
+				cin >> ch;
+			}
+
+		while (toupper(ch) == 'Y') 
+		{
+		ch = 'B';
+		cout << "These are your options : " << endl;
+		player->PrintCountriesAndNeighbours();
+
+		cout << "Which country would you like to ATTACK from?\nChoose an option." << endl;
+		from = SelectOption(player->getCountriesOwned());
+
+		cout << "Which country are you attacking?" <<endl;
+		Country* country = player->getCountry(from - 1);
+		vector<Country*> neighbours = country->getCNeighbours();
+		attack = SelectNeighbour(country->getCNeighbours());
+		// simplify above ?
+	
+		Country *atkrCountryP = player->getCountry(from - 1);
+		Country *dfndrCountryP = player->getNeighbour(from - 1, attack - 1);
+
+		Battle myBattle(player, atkrCountryP, dfndrCountryP);
+	
+		while(toupper(ch) != 'Y' && toupper(ch) != 'N') {
+			cout << "\nDo you want to attack?" << endl;
+				cin >> ch;
 			
+			}
 		}
 	}
-
 }
 
 //Has to be implemented according to adjacent countries.

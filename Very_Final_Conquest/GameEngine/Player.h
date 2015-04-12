@@ -13,7 +13,8 @@ private:
 	string playerName;
 	int remainingArmies; //Unused armies.
 	vector<Country*> *countriesOwned; //Countries owned/conquered by the player.
-	
+	string typeOfPlayer;
+	int playerTypeNum;
 
 public:
 	Player(string Name, int Armies); 
@@ -23,6 +24,8 @@ public:
 	Country* getCountry(int index); //Returns the address of the element at vector[index]
 	Country* getNeighbour(int cIndex, int nIndex);
 
+	string getTypeOfPlayer();
+	void setTypeOfPlayer();
 	void IncrementNumberOfArmies(int Armies);
 	void DecrementNumberOfArmies(int Armies);
 	void AddCountry(Country *country); //Add country to the list of countries owned.
