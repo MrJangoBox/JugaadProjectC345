@@ -14,7 +14,7 @@ using namespace std;
 StartupPhase::StartupPhase(int NoOfPlayers) {
 	numberOfPlayers = NoOfPlayers;
 	players = new vector <Player>; //Maximum number of players is 6.
-	vector <Country> countries; // Maximum number of countries is 42.
+	vector<Country> countries; // Maximum number of countries is 42.
 
 	ChooseMap();
 	LoadedMap = LoadData::LoadData("world.map").getAllCountries();
@@ -156,5 +156,5 @@ void StartupPhase::PrintPlayerInfo() {
 
 //Function that starts the game.
 void StartupPhase:: StartGame() {
-	MainPlayPhase mainPhaseObj = MainPlayPhase(players, listOfCPtr.size());
+	MainPlayPhase mainPhaseObj = MainPlayPhase(players, listOfCPtr.size(), LoadedMap);
 }

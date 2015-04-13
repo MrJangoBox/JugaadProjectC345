@@ -4,14 +4,19 @@
 #include "Player.h"
 #include "StartupPhase.h"
 #include "CompAttack.h"
+#include "SaveData.h"
+#include "LoadSavedData.h"
 
 using namespace std; 
 
 class MainPlayPhase {
 private:
-	vector <Player> * listCopy; //copy of the pointer to the vector of Players
+	// Private Variables
+	vector<Player> *listCopy; //copy of the pointer to the vector of Players
 	int numberOfCountries; //Total number of countries in the map.
+	vector<Country*>* map;
 
+	// Private methods
 	void setNumberOfCountries(int countries); //Demo Purpose
 	void Reinforce(Player *player);
 	void Attack(Player *player);
@@ -23,9 +28,12 @@ private:
 	int SelectNeighbour(vector<Country*> cNeighbours);
 	int ChooseNumberOfArmies(Player *player);
 	string CompChosesStrategy(Player *player);
+	void SaveGame(vector<Player> *playersPtr);
+	void LoadSavedData(vector<Player> *playersPtr);
 
 public:
-	MainPlayPhase(vector <Player> *playersPtr, int NoOfCountries);
+	//Public Methods
+	MainPlayPhase(vector <Player> *playersPtr, int NoOfCountries, vector<Country*>* LoadedMap);
 	void PlaceInitialArmies();
 	void StartRoundRobin();  //Start Game
 };

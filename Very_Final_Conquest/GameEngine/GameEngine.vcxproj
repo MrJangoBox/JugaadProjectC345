@@ -83,9 +83,11 @@
     <ClCompile Include="dice.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="LoadData.cpp" />
+    <ClCompile Include="LoadSavedData.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainPlayPhase.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SaveData.cpp" />
     <ClCompile Include="StartupPhase.cpp" />
     <ClCompile Include="Strategy.cpp" />
   </ItemGroup>
@@ -98,8 +100,10 @@
     <ClInclude Include="dice.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="LoadData.h" />
+    <ClInclude Include="LoadSavedData.h" />
     <ClInclude Include="MainPlayPhase.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SaveData.h" />
     <ClInclude Include="StartupPhase.h" />
     <ClInclude Include="Strategy.h" />
   </ItemGroup>

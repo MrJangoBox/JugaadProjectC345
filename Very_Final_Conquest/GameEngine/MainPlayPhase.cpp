@@ -7,13 +7,21 @@
 #include "battle.h"
 #include "CompAttack.h"
 
+
 using namespace std;
 
-MainPlayPhase:: MainPlayPhase(vector <Player> *playersPtr, int NoOfCountries) {
+MainPlayPhase:: MainPlayPhase(vector<Player> *playersPtr, int NoOfCountries, vector<Country*>* LoadedMap) {
+	
 	listCopy = playersPtr;
+	map = LoadedMap;
 	numberOfCountries = NoOfCountries;
 
 	PlaceInitialArmies();
+
+	LoadSavedData::LoadSavedData(playersPtr, map);
+
+	SaveGame(playersPtr);
+
 	StartRoundRobin();
 }
 
@@ -249,6 +257,12 @@ void MainPlayPhase::Fortify(Player *player) {
 		player->getCountry(to - 1)->IncrementArmyCount(armies);
 		player->PrintPlayerStats();
 	} // end of if-statement
+}
+
+
+// Saves the game in user defined file
+void MainPlayPhase::SaveGame(vector<Player> *playersPtr) {
+	SaveData save = SaveData(playersPtr);
 }
 
 

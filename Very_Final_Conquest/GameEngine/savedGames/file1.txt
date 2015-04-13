@@ -1,0 +1,3 @@
+[Players]
+PLAYER 1,Human,Peru=2,Madagascar=2,Eastern Australia=2,Northern Europe=2,Eastern United States=2,New Guinea=2,Congo=2,Afghanistan=2,Alaska=2,Japan=2,Irkutsk=2,Middle East=2,Quebec=2,Yatusk=2,Ural=2,Western Europe=2,Brazil=2,Western Australia=2,Siam=2,East Africa=1,Argentina=1
+PLAYER 2,Defensive,Mongolia=2,South Africa=2,Western United States=2,Iceland=2,Ukraine=2,China=2,Indonesia=2,North Africa=2,Venezuala=2,Ontario=2,Kamchatka=2,Northwest Territory=2,Scandinavia=2,Central America=2,India=2,Great Britain=2,Greenland=2,Egypt=2,Southern Europe=2,Alberta=1,Siberia=1

@@ -48,7 +48,7 @@ int LoadData::getIndexOfContinent(string name)
 
 int LoadData::getIndexOfCountry(string name) 
 {
-		for(int i = 0; i < allCountries->size(); i++) 
+	for(int i = 0; i < allCountries->size(); i++) 
 	{
 		if(allCountries->at(i)->getCountryName() == name)
 			return i;
