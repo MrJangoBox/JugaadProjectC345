@@ -39,7 +39,8 @@ void SaveData::SaveGame(vector<Player> playersList)
 	for(int i = 0; i < playersList.size(); i++)
 	{
 		outputfile << playersList.at(i).getPlayerName() << ",";
-		outputfile << playersList.at(i).getTypeOfPlayer();
+		outputfile << playersList.at(i).getTypeOfPlayer() << ",";
+		outputfile << playersList.at(i).getRemainingArmies();
 		for(int j = 0; j < playersList.at(i).getCountriesOwned()->size(); j++)
 		{
 			outputfile << "," << playersList.at(i).getCountriesOwned()->at(j)->getCountryName() << "=" << playersList.at(i).getCountriesOwned()->at(j)->getArmiesPlaced();

@@ -31,6 +31,9 @@ public:
 	void AddCountry(Country *country); //Add country to the list of countries owned.
 	void PrintPlayerStats(); //Display
 	void PrintCountriesAndNeighbours();
+	void setDefinedTypeOfPlayer(string type);
+	void setRemainingArmies(int numOfRArmies);
+	void addCountriesOwned(Country* addedCountry);
 };
 
 #endif

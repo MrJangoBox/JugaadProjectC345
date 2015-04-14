@@ -18,9 +18,7 @@ MainPlayPhase:: MainPlayPhase(vector<Player> *playersPtr, int NoOfCountries, vec
 
 	PlaceInitialArmies();
 
-	LoadSavedData::LoadSavedData(playersPtr, map);
-
-	SaveGame(playersPtr);
+	//SaveGame(playersPtr);
 
 	StartRoundRobin();
 }
@@ -49,6 +47,15 @@ void MainPlayPhase:: PlaceInitialArmies() {
 void MainPlayPhase:: StartRoundRobin() {
 	int roundCounter = 1; 
 	int i = 0;	
+
+	// Option to load a previous game
+	LoadSavedData loadSaved = LoadSavedData(listCopy, map);
+
+	listCopy = loadSaved.getLoadedVector();
+
+	cout << listCopy;
+
+
 	//Assuming a player wins when he owns all the countries.
 	cout << "\n\t-------------ROUND " << roundCounter << " ------------ " << endl;
 	while( listCopy->at(i).getCountriesOwned()->size() != numberOfCountries ) {

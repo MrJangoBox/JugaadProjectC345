@@ -35,5 +35,6 @@ public:
 	void ChooseMap();
 	void CreatePlayers();
 	void AssignCountries();
+	void ErasePlayers();
 };
 #endif

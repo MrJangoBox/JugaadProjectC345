@@ -15,16 +15,19 @@ private:
 	// Private variables
 	vector<Player> *playersList;
 	vector<Country*>* map;
+	vector<Player> *playerVector;
 
 	// Private Methods
-	void LoadSavedGame(vector<Player> playersLPtr);
-	void LoadGame(string filename);
-	void LoadPlayer(string previousLine);
+	vector<Player>* LoadSavedGame();
+	vector<Player>* LoadGame(string filename);
+	Player LoadPlayer(string previousLine);
+	int getIndexOfCountry(string name); 
 	
 
 public:
 	LoadSavedData(); // Default constructor
 	LoadSavedData(vector<Player> *playersLPtr, vector<Country*>* LoadedMap); // Parametrized constructor
+	vector<Player>* getLoadedVector();
 
 };
 #endif

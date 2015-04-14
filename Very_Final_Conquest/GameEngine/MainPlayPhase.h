@@ -29,7 +29,7 @@ private:
 	int ChooseNumberOfArmies(Player *player);
 	string CompChosesStrategy(Player *player);
 	void SaveGame(vector<Player> *playersPtr);
-	void LoadSavedData(vector<Player> *playersPtr);
+	void LoadSavedGame(vector<Player> *playersPtr);
 
 public:
 	//Public Methods

@@ -21,7 +21,10 @@ LoadSavedData::LoadSavedData() : playersList()
 // Parameterized constructor declaration
 LoadSavedData::LoadSavedData(vector<Player> *playersLPtr, vector<Country*>* LoadedMap) : playersList(playersLPtr), map(LoadedMap)
 {
-	LoadSavedGame(*playersList);
+	// Reinitialization of player list
+	playerVector = LoadSavedGame();
+
+	//playersList.erase(playersList.begin() + 1, playersList.begin() + 3);
 }
 
 vector<string> open(string path = ".") {
@@ -39,7 +42,17 @@ vector<string> open(string path = ".") {
     return files;
 }
 
-void LoadSavedData::LoadSavedGame(vector<Player> playersList)
+int LoadSavedData::getIndexOfCountry(string name) 
+{
+	for(int i = 0; i < map->size(); i++) 
+	{
+		if(map->at(i)->getCountryName() == name)
+			return i;
+	}
+	return 999; // need proper exceptions.
+}
+
+vector<Player>* LoadSavedData::LoadSavedGame()
 {
 	vector<string> f;
     f = open("savedGames"); // or pass which dir to open
@@ -62,13 +75,17 @@ void LoadSavedData::LoadSavedGame(vector<Player> playersList)
 		cin >> fileName;
 	}
 
-	LoadGame(f.at(fileName+2));
+	return LoadGame(f.at(fileName+2));
 }
 
-
-
-void LoadSavedData::LoadGame(string filename)
+vector<Player>* LoadSavedData::getLoadedVector()
 {
+	return playerVector;
+}
+
+vector<Player>* LoadSavedData::LoadGame(string filename)
+{
+	vector<Player>* newPlayerVector = new vector<Player>;
 	string nextLine;
 	string previousLine = " ";
 
@@ -84,17 +101,25 @@ void LoadSavedData::LoadGame(string filename)
 			if (nextLine != previousLine && !nextLine.empty())
 			{
 				previousLine = nextLine;
-				LoadPlayer(previousLine);
+				newPlayerVector->push_back(LoadPlayer(previousLine));
 			}
 		}
 	}
 	inputfile.close();
+
+	return newPlayerVector;
 }
 
-void LoadSavedData::LoadPlayer(string Line)
+Player LoadSavedData::LoadPlayer(string Line)
 {
+	int countryPos;
+
 	vector<string> tokens;
 	string delimeter = ",";
+
+	string tokenLine;
+	size_t pos = 0;
+	string tokenDelimeter = "=";
 
 	size_t endPos = 0;
 	string token;
@@ -106,5 +131,25 @@ void LoadSavedData::LoadPlayer(string Line)
 		Line = Line.substr(endPos+delimeter.length(), string::npos);
 	}
 
-	cout << map->at(1)->getCountryName();
+
+	Player player = Player(tokens.at(0), 0);
+	player.setDefinedTypeOfPlayer(tokens.at(1));
+	player.setRemainingArmies(stoi(tokens.at(2)));
+
+	for (int i = 3; i < tokens.size(); i++)
+	{
+		tokenLine = tokens.at(i);
+		pos = tokenLine.find(tokenDelimeter);
+		token = tokenLine.substr(0, pos);
+		tokenLine.erase(0, pos + tokenDelimeter.length());
+		
+		countryPos = getIndexOfCountry(token);
+
+		map->at(countryPos)->setArmies(stoi(tokenLine));
+
+		player.addCountriesOwned(map->at(countryPos));
+	}
+
+
+	return player;
 }

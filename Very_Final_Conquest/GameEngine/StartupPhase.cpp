@@ -154,6 +154,11 @@ void StartupPhase::PrintPlayerInfo() {
 	}
 }
 
+void StartupPhase::ErasePlayers() {
+	vector <Player> *playersEmpty;
+	players = playersEmpty;
+}
+
 //Function that starts the game.
 void StartupPhase:: StartGame() {
 	MainPlayPhase mainPhaseObj = MainPlayPhase(players, listOfCPtr.size(), LoadedMap);

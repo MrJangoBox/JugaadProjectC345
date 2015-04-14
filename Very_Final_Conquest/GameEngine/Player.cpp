@@ -23,6 +23,11 @@ Player:: Player(string Name,int Armies) {
 
 // *************************** Added for Assignement 2 - Strategy **********************************
 
+void Player:: setDefinedTypeOfPlayer(string type)
+{
+	typeOfPlayer = type;
+}
+
 void Player:: setTypeOfPlayer()
 {
 	playerTypeNum = 0;
@@ -52,12 +57,22 @@ string Player:: getPlayerName() {
 	return playerName;
 }
 
+void Player:: setRemainingArmies(int numOfRArmies)
+{
+	remainingArmies = numOfRArmies;
+}
+
 int Player:: getRemainingArmies() {
 	return remainingArmies;
 }
 
 vector <Country*>* Player:: getCountriesOwned() {
 	return countriesOwned;
+}
+
+void Player:: addCountriesOwned(Country* addedCountryPtr)
+{
+	countriesOwned->push_back(addedCountryPtr);
 }
 
 Country* Player::getCountry(int index) {
