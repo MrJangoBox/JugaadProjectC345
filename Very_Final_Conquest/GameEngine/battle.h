@@ -37,6 +37,9 @@ private:
 	// Determines maximum attack roll allowance based on number of armies in country
 	int availableAttackType(Country cAtkr);
 
+	// Determines maximum defense roll allowance based on number of armies in country
+	int availableDefenseType(Country cDfndr, int numOfAtckRolls);
+
 	// User choice of attack
 	int attackChoice(int maxRollNum);
 

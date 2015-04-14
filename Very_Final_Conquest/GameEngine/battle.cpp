@@ -17,6 +17,7 @@ Battle::Battle(Player *pAtkr, Country *cAtkr, Country *cDfndr) : playerAtkr(pAtk
 	
 	// *************************** Added for Assignement 2 - Strategy **********************************
 
+	// Very simple AI, if player is a computer, it will always All-in if atttacks depending on strategy
 	if(pAtkr->getPlayerName() == "PLAYER 1") {
 		battleDrive(countryDfndr, countryAtkr);
 	} else {
@@ -33,10 +34,16 @@ int Battle::maximumValue(int a[])
 
      for(int i = 0; i<3; i++)
      {
-          if(a[i] > max)
+		 int value = a[i];
+		 
+		 // Adds roll value to displayed list of rolls if set
+		 if (value != -1)
+			cout << value << ", ";
+
+          if(value > max)
 		  {
 			  //cout << "\n\ngreater element " << array[i] << "\n\n finally ";
-              max = a[i];
+              max = value;
 		  }
 	 }
      return max;                // return highest value in array
@@ -62,7 +69,7 @@ int Battle::attackChoice(int maxRollNum)
 	{
 		case 1 : while (numDiceRoll == NULL)
 				 {
-					cout << "Choose number of dice roll (available: 1)";
+					cout << "\nChoose number of dice roll (available: 1) ";
 					cin >> numDiceRoll;
 					if (numDiceRoll != 1) 
 					{
@@ -74,7 +81,7 @@ int Battle::attackChoice(int maxRollNum)
 				 break;
 		case 2 : while (numDiceRoll == NULL)
 				 {
-					cout << "Choose number of dice roll (available: 1 or 2)";
+					cout << "\nChoose number of dice roll (available: 1 or 2) ";
 					cin >> numDiceRoll;
 					if (numDiceRoll != 1 && numDiceRoll != 2) 
 					{
@@ -86,7 +93,7 @@ int Battle::attackChoice(int maxRollNum)
 				 break;
 		case 3 : while (numDiceRoll == NULL)
 				 {
-					cout << "Choose number of dice roll (available: 1,2 or 3)";
+					cout << "\nChoose number of dice roll (available: 1,2 or 3) ";
 					cin >> numDiceRoll;
 					if (numDiceRoll != 1 && numDiceRoll != 2 && numDiceRoll != 3) 
 					{
@@ -98,7 +105,7 @@ int Battle::attackChoice(int maxRollNum)
 				 break;
 		case 4 : while (numDiceRoll == NULL)
 				 {
-					cout << "Choose number of dice roll (available: 1,2,3 or 4)";
+					cout << "\nChoose number of dice roll (available: 1,2,3 or 4) ";
 					cin >> numDiceRoll;
 					if (numDiceRoll != 1 && numDiceRoll != 2 && numDiceRoll != 3 && numDiceRoll != 4) 
 					{
@@ -116,6 +123,13 @@ int Battle::attackChoice(int maxRollNum)
 int* Battle::attackRoll(int numOfAtckRolls) 
 {
 	static int roundsAtkr[3];
+
+	// Initializes Array to no rolls
+	for(int j = 0; j < 3; j++)
+	{
+		roundsAtkr[j] = -1;
+	}
+
 	Dice diceAtkr(0);
 	switch(numOfAtckRolls)
 	{
@@ -142,13 +156,17 @@ int* Battle::attackRoll(int numOfAtckRolls)
 }
 
 // Determines maximum defense roll allowance based on number of armies in country
-int availableDefenseType(Country cDfndr) 
+int Battle::availableDefenseType(Country cDfndr, int numOfAtckRolls) 
 {
 	
 	int maxRollNum = 2;
 
 	if (cDfndr.getArmiesPlaced() < 2) 
+	{
 		maxRollNum = cDfndr.getArmiesPlaced();
+	} else if(numOfAtckRolls < 2) {
+		maxRollNum = numOfAtckRolls;
+	}
 
 	return maxRollNum;
 }
@@ -157,6 +175,12 @@ int availableDefenseType(Country cDfndr)
 int* Battle::defenseRoll(int maxRollNum) 
 {
 	static int roundsDfndr[3];
+
+	for(int j = 0; j < 3; j++)
+	{
+		roundsDfndr[j] = -1;
+	}
+
 	Dice diceDfndr(0);
 	switch(maxRollNum)
 	{
@@ -182,27 +206,33 @@ int* Battle::defenseRoll(int maxRollNum)
 	return roundsDfndr;
 }
 
-// Determines best roll in provide array
+// Determines best roll in provided array
 int Battle::getBestRoll(int arr[])
 {
-	cout <<  "\n\nMax Value: " << maximumValue(arr) << endl;
-	return maximumValue(arr);
+	int maxValue = maximumValue(arr); 
+	cout <<  "  Max: " << maxValue << endl;
+	return maxValue;
 }
 
-// Determines second best roll in provide array
+// Determines second best roll in provided array
 int Battle::getSecondBestRoll(int* arr, int currentMax)
 {
 	int i = 0;
+
+
 	while(*(arr + i) != currentMax)
 	{
 		i++;
 	}
-	*(arr + i) = 0;
+	*(arr + i) = -1;
 
-	cout <<  "\n\nSecond Max Value: " << maximumValue(arr) << endl;
+	cout <<  "other rolls: ";
 
-	return maximumValue(arr);
-	
+	int maxValue = maximumValue(arr);
+
+	cout <<  "  Max: " << maxValue;
+
+	return maxValue;	
 }
 
 // Determines winner of the round
@@ -221,18 +251,18 @@ void removeArmy(string winPlayer, Country &cAtkr, Country &cDfndr)
 {
 	if(winPlayer == "Defender")
 	{
-		cout << "\nDefender Won\n" << endl;
+		cout << "\n\n***Defender Won***" << endl;
 		//cAtkr.setNumOfArmies(cAtkr.getNumOfArmies()-1);
 		cAtkr.DecrementArmyCount(1);
 	} else {
 
-		cout << "\nAttacker Won\n" << endl;
+		cout << "\n\n***Attacker Won***" << endl;
 		//cDfndr.setNumOfArmies(cDfndr.getNumOfArmies()-1);
 		cDfndr.DecrementArmyCount(1);
 	}
-
-	cout << "\nNumber of Attacker Armies: " << cAtkr.getArmiesPlaced();
-	cout << "\nNumber of Defender Armies: " << cDfndr.getArmiesPlaced() << endl;
+	cout << "\nStatistical Outcome: \n";
+	cout << "\nAttacking Country's Armies: " << cAtkr.getArmiesPlaced();
+	cout << "\nDefending Country's Armies: " << cDfndr.getArmiesPlaced() << endl;
 }
 
 // Determines the max attacker roll automatically during All-in
@@ -252,6 +282,11 @@ void Battle::allIn(Country *cAtkr, Country *cDfndr)
 {
 	while(cAtkr -> getArmiesPlaced() > 0 && cDfndr -> getArmiesPlaced() > -1)
 	{
+		cout << "\n\n_____________New Round Starts______________";
+
+		// Attacker Rolls *********************************************
+		cout << "\n\n------First Roll Results------";
+
 		// Retrieves max number of attack rolls
 		int attackRolls = maxAttackType(*cAtkr);
 
@@ -259,18 +294,26 @@ void Battle::allIn(Country *cAtkr, Country *cDfndr)
 		// Returns the pointer for the attack rolls array
 		atkrArray = attackRoll(attackRolls);
 
+		cout << "\n\nAttacker rolled: ";
+
 		// Returns the max attack roll
 		int attackBest = getBestRoll(atkrArray);
 
+		// Defender Rolls *********************************************
+
 		// Returns the max number of defend rolls
-		int numDefenseRolls = availableDefenseType(*cDfndr);
+		int numDefenseRolls = availableDefenseType(*cDfndr, attackRolls);
 
 		int *dfndrArray;
 		// Returns the pointer for the defense rolls array
 		dfndrArray = defenseRoll(numDefenseRolls);
 
+		cout << "\n\nDefender rolled: ";
+
 		// Returns the max defense roll
 		int defenseBest = getBestRoll(dfndrArray);
+
+		// Determine the Winner ***************************************
 
 		// Returns the winning player
 		string playerWinner = getWinner(attackBest, defenseBest);
@@ -281,6 +324,11 @@ void Battle::allIn(Country *cAtkr, Country *cDfndr)
 		// Calculates a second win if defender & attacker rolled more than one dice
 		if (numDefenseRolls > 1 && attackRolls > 1) 
 		{
+
+			cout << "\n\n------Second Roll Results------";
+
+			cout << "\n\nAttacker ";
+
 			int attackSecondBest = getSecondBestRoll(atkrArray, attackBest);
 			int defenseSecondBest = getSecondBestRoll(dfndrArray, defenseBest);
 
@@ -291,6 +339,7 @@ void Battle::allIn(Country *cAtkr, Country *cDfndr)
 			removeArmy(playerSecondWinner, *cAtkr, *cDfndr);
 		}
 	}
+	cout << "\n_______________End of Attack_______________\n\n";
 }
 
 // Battle Function between two players
@@ -303,23 +352,35 @@ void Battle::battleDrive(Country *countryDfndr, Country *countryAtkr) {
 	int attackRolls = attackChoice(numAttackType);
 	
 	if( attackRolls != 4) {
+		cout << "\n\n_____________New Round Starts______________";
+
+		// Attacker Rolls *********************************************
+		cout << "\n\n------First Roll Results------";
 
 		int *atkrArray;
 		// Returns the pointer for the attack rolls array
 		atkrArray = attackRoll(attackRolls);
 
+		cout << "\n\nAttacker rolled: ";
+
 		// Returns the max attack roll
 		int attackBest = getBestRoll(atkrArray);
 
+		// Defender Rolls *********************************************
+
 		// Returns the max number of defend rolls
-		int numDefenseRolls = availableDefenseType(*countryDfndr);
+		int numDefenseRolls = availableDefenseType(*countryDfndr, attackRolls);
 
 		int *dfndrArray;
 		// Returns the pointer for the defense rolls array
 		dfndrArray = defenseRoll(numDefenseRolls);
 
+		cout << "\n\nDefender rolled: ";
+
 		// Returns the max defense roll
 		int defenseBest = getBestRoll(dfndrArray);
+
+		// Determine the Winner ***************************************
 
 		// Returns the winning player
 		string playerWinner = getWinner(attackBest, defenseBest);
@@ -327,20 +388,29 @@ void Battle::battleDrive(Country *countryDfndr, Country *countryAtkr) {
 		// Removes one country of the loosing player
 		removeArmy(playerWinner, *countryAtkr, *countryDfndr);
 
+		// Determines possible second winner ***************************
+
 		// Calculates a second win if defender & attacker rolled more than one dice
 		if (numDefenseRolls > 1 && attackRolls > 1) 
 		{
+			cout << "\n\n------Second Roll Results------";
+
+			cout << "\n\nAttacker ";
+
 			int attackSecondBest = getSecondBestRoll(atkrArray, attackBest);
+
+			cout << "\nDefender ";
 			int defenseSecondBest = getSecondBestRoll(dfndrArray, defenseBest);
 
+			cout << "\n";
 			// Returns the winning player for a second roll
 			string playerSecondWinner = getWinner(attackSecondBest, defenseSecondBest);
 
 			// Removes a second country of the second loosing player
 			removeArmy(playerSecondWinner, *countryAtkr, *countryDfndr);
 		}
+		cout << "\n_______________End of Attack_______________\n\n";
 	} else {
 		allIn(countryAtkr, countryDfndr);
 	}
-
 }

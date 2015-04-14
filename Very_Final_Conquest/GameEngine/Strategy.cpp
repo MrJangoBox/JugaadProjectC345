@@ -45,7 +45,7 @@ void AggresiveAttack::executeAttack(Player *player){
 				&& countryNeighbours.at(j)->getArmiesPlaced() >= 0)
 			{
 				Country *dfndrCountryP = countryNeighbours.at(j);
-				cout << "\n\n*********************************************************\n";
+				cout << "\n\n********************* Another Batlle ********************\n";
 				cout << "\nBattle between " << atkrCountryP->getCountryName() << " and " << dfndrCountryP->getCountryName() << endl;
 
 				// Simulates a battle
@@ -109,7 +109,7 @@ void DefensiveAttack::executeAttack(Player *player){
 						&& countryNeighbours.at(j)->getArmiesPlaced() >= 0)
 					{
 						Country *dfndrCountryP = countryNeighbours.at(j);
-						cout << "\n\n*********************************************************\n";
+						cout << "\n\n********************* Another Batlle ********************\n";
 						cout << "\nBattle between " << atkrCountryP->getCountryName() << " and " << dfndrCountryP->getCountryName() << endl;
 
 						// Simulates a battle
@@ -154,7 +154,7 @@ void RandomAttack::executeAttack(Player *player){
 				if(playerCountry->getArmiesPlaced() != 0 && attackNeighbour == 1 && countryNeighbours.at(j)->getArmiesPlaced() >= 0)
 				{
 					Country *dfndrCountryP = countryNeighbours.at(j);
-					cout << "\n\n*********************************************************\n";
+					cout << "\n\n********************* Another Batlle ********************\n";
 					cout << "\nBattle between " << atkrCountryP->getCountryName() << " and " << dfndrCountryP->getCountryName() << endl;
 
 					// Simulates a battle

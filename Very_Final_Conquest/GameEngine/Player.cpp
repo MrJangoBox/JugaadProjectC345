@@ -102,8 +102,8 @@ void Player::AddCountry(Country *country) {
 
 
 void Player::PrintPlayerStats() {
-	cout << playerName << " : " << endl;
-	cout << "Total number of countries owned : " << countriesOwned->size() << endl;
+	cout << "\n\n" << playerName << "   -   Stategy: " << typeOfPlayer << endl;
+	cout << "\nTotal number of countries owned : " << countriesOwned->size() << endl;
 	cout << "Total number of armies owned : " << remainingArmies <<endl;
 
 	for(int i = 0; i < countriesOwned->size(); i++) {

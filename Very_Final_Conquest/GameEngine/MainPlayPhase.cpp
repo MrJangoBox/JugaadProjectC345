@@ -49,12 +49,9 @@ void MainPlayPhase:: StartRoundRobin() {
 	int i = 0;	
 
 	// Option to load a previous game
-	LoadSavedData loadSaved = LoadSavedData(listCopy, map);
+	//LoadSavedData loadSaved = LoadSavedData(listCopy, map);
 
-	listCopy = loadSaved.getLoadedVector();
-
-	cout << listCopy;
-
+	//listCopy = loadSaved.getLoadedVector();
 
 	//Assuming a player wins when he owns all the countries.
 	cout << "\n\t-------------ROUND " << roundCounter << " ------------ " << endl;
