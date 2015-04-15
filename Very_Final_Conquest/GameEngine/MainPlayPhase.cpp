@@ -18,8 +18,6 @@ MainPlayPhase:: MainPlayPhase(vector<Player> *playersPtr, int NoOfCountries, vec
 
 	PlaceInitialArmies();
 
-	//SaveGame(playersPtr);
-
 	StartRoundRobin();
 }
 
@@ -48,8 +46,22 @@ void MainPlayPhase:: StartRoundRobin() {
 	int roundCounter = 1; 
 	int i = 0;	
 
-	// Option to load a previous game
-	//LoadSavedData loadSaved = LoadSavedData(listCopy, map);
+	int loadOptionChoosen = -1;
+		
+	cout << "\n\nwould you like to continue(option 0) or load another game(option 1): ";
+	cin >> loadOptionChoosen;
+
+	while(loadOptionChoosen != 0 && loadOptionChoosen != 1)
+	{
+		cout << "\n invalid option, please try again ";
+		cin >> loadOptionChoosen;
+	}
+
+	if(loadOptionChoosen == 1)
+	{
+		// Option to load a previous game
+		LoadSavedData loadSaved = LoadSavedData(listCopy, map);
+	}
 
 	//listCopy = loadSaved.getLoadedVector();
 
@@ -67,8 +79,25 @@ void MainPlayPhase:: StartRoundRobin() {
 			roundCounter++; // Counter for the number of turns.
 			cout << "\n\t-------------ROUND " << roundCounter << " ------------ " << endl;
 		}
-		if(roundCounter == 2) //To avoid infinite looping for the purpose of demonstration.
-			setNumberOfCountries(listCopy->at(i).getCountriesOwned()->size());
+
+		int optionChoosen = -1;
+		
+		cout << "\n\nwould you like to continue(option 0), save game(option 1) or load another game(option 2): ";
+		cin >> optionChoosen;
+
+		while(optionChoosen != 0 && optionChoosen != 1 && optionChoosen != 2)
+		{
+			cout << "\n invalid option, please try again ";
+			cin >> optionChoosen;
+		}
+
+		if(optionChoosen == 1)
+		{
+			SaveGame(listCopy);
+		} else if(optionChoosen == 1) {
+			LoadSavedData loadSaved = LoadSavedData(listCopy, map);
+		}
+
 	} // end of while 
 
 	if(listCopy->at(i).getCountriesOwned()->size() == numberOfCountries)

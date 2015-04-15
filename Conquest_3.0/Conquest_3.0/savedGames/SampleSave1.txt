@@ -1,0 +1,4 @@
+[Players]
+PLAYER 1,Human,4,Ukraine=3,Yatusk=3,India=3,Western Australia=3,Northern Europe=3,Mongolia=3,Eastern Australia=3,Venezuala=2,China=2,Alaska=2,Northwest Territory=2,East Africa=2,Scandinavia=2
+PLAYER 2,Random,4,Brazil=2,Eastern United States=1,Central America=3,Alberta=3,Western United States=3,Congo=3,Irkutsk=3,Madagascar=2,Greenland=2,Kamchatka=0,South Africa=0,Ural=0,North Africa=0,Siam=2,Quebec=0
+PLAYER 3,Defensive,4,Peru=2,Afghanistan=4,Japan=3,Great Britain=3,Egypt=3,Indonesia=3,Ontario=3,Siberia=1,Iceland=2,New Guinea=2,Southern Europe=2,Middle East=2,Argentina=2,Western Europe=2
